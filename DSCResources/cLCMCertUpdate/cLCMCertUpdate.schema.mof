@@ -1,0 +1,16 @@
+[ClassVersion("1.0.0"), FriendlyName("cLCMCertUpdate")]
+class cLCMCertUpdate : OMI_BaseResource
+{
+	[Key] String CollectionName;
+	[required, EmbeddedInstance("MSFT_Credential"), Description("Credential to login to SCCM")] String SCCMAdministratorCredential;
+	[Write] String LimitingCollectionName;
+	[Write] String ParentFolder;
+	[Write] String Comment;
+	[Read] String Site;
+	[Write, ValueMap{"1","2"}, Values{"User","Device"}] String CollectionType;
+	[Write] String RefreshDays;
+	[Write, ValueMap{"2","4","6"}, Values{"Periodic","Incremental","Both"}] String RefreshType;
+	[Write] DateTime RefreshStart;
+	[Write, ValueMap{"Present","Absent"}, Values{"Present","Absent"}] String Ensure;
+};
+
